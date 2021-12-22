@@ -1,11 +1,13 @@
 version: '3.8'
 
 services:
+  # redis service
   redis:
     image: redis
     ports:
       - 6379:6379
       
+  # main database 
   postgres:
     build: ./db
     restart: always
@@ -19,7 +21,8 @@ services:
     ports:
       - 5432:5432
     
-  app:
+  # auth service
+  auth:
     build: ./payment-system-auth
     command: ./app
     ports:
@@ -31,7 +34,9 @@ services:
       - redis
       - postgres
 
+  # parsing service
 
+  #  
     
 
 
