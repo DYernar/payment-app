@@ -1,5 +1,16 @@
-CREATE ROLE payment WITH LOGIN PASSWORD 'payment';
-CREATE DATABASE payment_db;
+DO
+$do$
+BEGIN
+   IF NOT EXISTS (
+      SELECT FROM pg_catalog.pg_roles  -- SELECT list can be empty for this
+      WHERE  rolname = 'payment') THEN
+
+      CREATE ROLE payment LOGIN PASSWORD 'payment';
+   END IF;
+END
+$do$;
+
+-- CREATE DATABASE IF NOT EXISTS payment_db;
 
 CREATE TABLE IF NOT EXISTS users (
     id bigserial PRIMARY KEY,

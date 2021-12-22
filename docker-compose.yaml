@@ -35,7 +35,18 @@ services:
       - postgres
 
   # parsing service
-
+  parsing:
+    build: ./payment-system-parsing
+    command: ./app
+    ports:
+      - 8112:8112
+    depends_on: 
+      - redis
+      - postgres
+    links:
+      - redis
+      - postgres
+      - auth
   #  
     
 
