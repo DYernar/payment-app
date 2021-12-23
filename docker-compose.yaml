@@ -43,6 +43,7 @@ services:
     depends_on: 
       - redis
       - postgres
+      - auth
     links:
       - redis
       - postgres
