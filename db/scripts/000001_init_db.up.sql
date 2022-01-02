@@ -51,3 +51,6 @@ CREATE TABLE IF NOT EXISTS transfers (
     amount double precision DEFAULT 0 CHECK (amount  >= 0),
     created_at timestamp(0) WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
+
+INSERT INTO users(iin, login, password) VALUES ('000524500238', 'admin', '12345');
+INSERT INTO roles(name, user_id) VALUES ('ROLE_ADMIN', 1);
